@@ -1,3 +1,8 @@
+# Unnecessary files
+#
+__tests__/
+ios/
+
 # OSX
 #
 .DS_Store
