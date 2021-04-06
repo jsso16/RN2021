@@ -103,23 +103,23 @@ React Native 2021
 - 다양한 메서드들이 컴포넌트 생명주기동안 특정 시점에 실행되는데 이를 생명주기 메서드라고 한다.
 - 생명주기는 생성(Mount), 갱신, 파기(Unmount)의 세가지로 나뉜다.
 
-1. static getDerivedStateFronProps 메서드
+1. **static getDerivedStateFronProps 메서드**
 - static클래스 메서드로 컴포넌트가 생성될 때와 컴포넌트가 새 props를 전달받을 때 모두 호출된다.
 - 새로운 props와 가장 최근의 state를 인수로 전달받아서 하나의 객체를 반환한다.
 - 객체의 데이터는 컴포넌트의 state로 갱신된다.
 
-2. componentDidMount 메서드
+2. **componentDidMount 메서드**
 - 컴포넌트가 로딩되고나서 바로 한번만 호출된다.
 - Ajax호출로 가져온 데이터를 처리한다.
 - 지정된 실행 후에 실행되는 setTimeout을 처리하거나, 다른 자바스크립트 프레임워크들과 통합하기에 적절한 위치이다.
 
-3. shouldComponentUpdate 메서드
+3. **shouldComponentUpdate 메서드**
 - Boolean을 반환하며, 컴포넌트의 랜더링할 것인지를 결정할 수 있다.
 
-4. componentWillUpdate 메서드
+4. **componentWillUpdate 메서드**
 - 컴포넌트가 갱신되면서 재랜더링된 후에 바로 호출된다.
 - 이전 state와 props를 인수로 갖는다.
 
-5. componentWillUnmount 메서드
+5. **componentWillUnmount 메서드**
 - 앱에서 컴포넌트가 파기되기 전에 호출된다.
 - 설정된 값을 정리하고, 리스너를 삭제하고, 타이머를 제거하도록 지정할 수 있다.
