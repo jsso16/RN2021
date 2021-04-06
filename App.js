@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -27,46 +27,22 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 
-// 예제 2.6
-class MyComponent extends React.Component {
-  render() {
-    return (
-      <BookDisplay book = "React Native in Action!" />
-    )
-  }
+// 예제 2.19
+class MainComponent extends Component { 
+  handleClick() {
+     this._timeout = setTimeout(() => {
+       this.openWidget();
+     }, 2000);
+   }
+
+   componentWillUnmount() {
+     clearTimeout(this._timeout); 
+   }
+
+   render() {
+     return <SomeComponent 
+              handleClick={() => this.handleClick()} />
+   }
 }
 
-class BookDisplay extends React.Component {
-  render() {
-    return (
-      <View>
-        <Text>{this.props.book}</Text>
-      </View>
-    )
-  }
-}
-
-export default MyComponent;
-
-
-// 예제 2.8
-class App extends React.Component {
-  render() {
-    let book = 'React Native in Action!'
-    return (
-      <BookDisplay book = {book} />
-    )
-  }
-}
-
-class BookDisplay extends React.Component {
-  render() {
-    return (
-      <View>
-        <Text>{this.props.book}</Text>
-      </View>
-    )
-  }
-}
-
-export default App;
+export default MainComponent;
