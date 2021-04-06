@@ -36,7 +36,8 @@ class MyComponent extends Component {
       name: 'Jeon Sojin',
       colors: ['skyblue']
     }
-  }    
+  } 
+     
   render() {
     return (
       <View>
