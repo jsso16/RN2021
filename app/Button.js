@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, TouchableHighlight} from 'react-native'
 
 // 예제 3.12
 const Button = ({submitTodo}) => (
-	<View style={styles.buttonContainer}>
+  <View style={styles.buttonContainer}>
     <TouchableHighlight
       underlayColor='#efefef'
       style={styles.button}
