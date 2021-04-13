@@ -12,7 +12,7 @@ React Native 2021
 - 프로젝트를 생성하고, index.js의 기본 코드를 주석처리한다.
 
 4. index.js의 코드의 주요부분 분석하기
-- 현재 root에 있는 App.js를 사용하지 않고, app이라는 폴더를 만들고 그곳애 새로 App.js를 생성할 예정이므로 import 경로를 바꿔준다.
+- 현재 root에 있는 App.js를 사용하지 않고, app이라는 폴더를 만들고 그곳에 새로 App.js를 생성할 예정이므로 import 경로를 바꿔준다.
 
 5. App.js 코드 작성하기
 
