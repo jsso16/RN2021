@@ -4,12 +4,12 @@ React Native 2021
 ## 04월 09일
 > 처음 만드는 React Native 앱 - todo 앱 만들기
 1. todo 앱 레이아웃 작성하기
-- 앱의 구조를 판단하기 위해 view를 구성해 본다.
+- 앱의 구조를 판단하기 위해 view를 구성해본다.
 
 2. 앱의 동작 방법 알아보기
 
 3. todo 앱 코드 작성하기
-- 프로젝트를 생성하고, index.js의 기본 코드를 주석 처리한다.
+- 프로젝트를 생성하고, index.js의 기본 코드를 주석처리한다.
 
 4. index.js의 코드의 주요부분 분석하기
 - 현재 root에 있는 App.js를 사용하지 않고, app이라는 폴더를 만들고 그곳애 새로 App.js를 생성할 예정이므로 import 경로를 바꿔준다.
@@ -19,8 +19,7 @@ React Native 2021
 6. .app/App.js의 코드 주요부분 분석하기
 - 이곳에서는 Scroll View 컴포넌트를 사용하고 있는데, 이 컴포넌트는 스크롤이 가능한 View를 만들어주는 컴포넌트이다.
 - props인 keyboardShouldPersistTaps가 'always'로 지정되어 있는 것은, 키보드가 열려있을 경우 이를 닫고 난 후에 onPress 이벤트를 처리하게 한다.
-- container를 보면 flex:1을 확인할 수 있는데, 이 element는 상위 컨테이너 영
-역 전체를 채워주게 하므로 ScrollView 컴포넌트도 style flex:1을 적용하기 때문에 상위의 View 컴포넌트 영역을 꽉 채우게 된다.
+- container를 보면 flex:1을 확인할 수 있는데, 이 element는 상위 컨테이너 영역 전체를 채워주게 하므로 ScrollView 컴포넌트도 style flex:1을 적용하기 때문에 상위의 View 컴포넌트 영역을 꽉 채우게 된다.
 
 7. 초기 state의 설정
 - 초기화 설정은 render() 함수 위에 하면 된다.
@@ -38,11 +37,11 @@ React Native 2021
 
 12. inputChange 메서드 작성하기
 - inputChange 메서드는 인수가 하나로 TextInput의 값을 전달한다.
-- inputChange 메서드는 TextInput에서 반환된 값으로 state인 inputValue를 갱신 한다.
+- inputChange 메서드는 TextInput에서 반환된 값으로 state인 inputValue를 갱신한다.
 
 13. inputChange와 inputValue를 TextInput에 추가하기
 - TextInput의 값이 변경되면 inputChange 메서드가 호출되고, 이 값은 부모 컴포넌트로 전달되어 inputValue의 state를 지정하게 된다.
-- onChangeText 메서드는 TextInput 컴포넌트의 값이 변경될 때마다 이 메서드가 호출되 고 TextInput의 값이 전달된다.
+- onChangeText 메서드는 TextInput 컴포넌트의 값이 변경될 때마다 이 메서드가 호출되고 TextInput의 값이 전달된다.
 
 14. submitTodo 메서드 추가하기
 - inputValue의 값이 state로 지정되어 있으므로 버튼에 submitTodo 메서드를 바인딩하여 todo 목록에 항목을 추가해준다.
@@ -50,7 +49,7 @@ React Native 2021
 15. todoIndex 변수 생성하기
 
 16. Button 컴포넌트 만들고 가져오기
-- HTML의 button과 유사하며, TouchableHighlight를 사용하면 뷰들을 감쌀 수 있으며, 이들 view가 터치 이멘트에 적절히 대응하게 해준다.
+- HTML의 button과 유사하며, TouchableHighlight를 사용하면 뷰들을 감쌀 수 있으며, 이들 view가 터치 이벤트에 적절히 대응하게 해준다.
 
 
 ## 04월 02일
