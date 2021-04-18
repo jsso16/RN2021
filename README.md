@@ -1,6 +1,41 @@
 # RN2021 - 201930231 전소진
 React Native 2021
 
+## 04월 16일
+1. Todo 컴포넌트 만들기
+- TodoList는 todo 목록을 랜더링하고, 각각의 todo에 대해서는 Todo 컴포넌트를 사용하여 2개의 컴포넌트를 만들어 랜더링을 해준다.
+
+2. TodoList 컴포넌트 만들기
+- todos 배열을 매핑해서 각각의 todo에 대해 새로운 Todo 컴포넌트를 만들고, 각 Todo 컴 포넌트에 속성으로 todo 객체를 전달한다.
+
+3. TodoList 컴포넌트 가져오기
+
+4. toggleComplete와 deleteTodo 메소드 추가하기
+- toggleComplete는 todo가 완료되었는지를 전달해주고, deleteTodo는 todo를 제거한다.
+
+5. TodoButton.js파일 작성하기
+
+6. toggleComplete와 deleteTodo를 TodoList에 props로 전달하기
+
+7. Todo.js를 갱신해 TodoButton과 기능을 적용하기
+- TodoButton.js파일에 정의한 onPress로 deleteTodo, toggleComplete 메소드를 호출하여 전달한다.
+
+8. setType 메소드 추가하기
+- setType 메소드는 인수로 type을 가지며, state인 type을 갱신해준다.
+
+9. TabBar 컴포넌트 만들기
+- TabBar 컴포넌트는 setType과 type을 props로 갖는다.
+
+10. TabBarItem 컴포넌트 만들기 
+- TabBarItem 컴포넌트는 props가 title, type, setType 3가지이다.
+
+11. TabBar 컴포넌트 구현하기
+- state에서 type을 구조분해할당하고, 이것을 TabBar와 TodoList 컴포넌트에 전달한다.
+- todo들을 필터링할 때 이 type 변수를 사용한다.
+
+12. TodoList 컴포넌트 갱신하기
+- todos 변수를 getVisibleTodos가 반환한 값으로 지정한다.
+
 ## 04월 09일
 > 처음 만드는 React Native 앱 - todo 앱 만들기
 1. todo 앱 레이아웃 작성하기
