@@ -26,7 +26,7 @@ React Native 2021
 
 3. 스타일시트 분리하기
 - 내부 컴포넌트인 Stylesheet 컴포넌트를 import하고, 일반 컨포넌트와 마찬가지로 외부로 사용할 수 있도록 export해 준다.
-```r
+```jsx
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({    
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({    
 export {styles, buttons};
 ```
 - 외부 스타일을 컴포넌트로 가져와 사용하는 방법 역시 import를 해주면 된다.
-```r
+```jsx
 import {styles, buttons} from './styles'
 
 export default class App extends Component {
@@ -55,14 +55,14 @@ export default class App extends Component {
   }
 }
 ```
-4. 
+4. toggle 앱 코드의 주요부분
 - 반복적으로 사용하는 스타일은 spread 연산자로 불러온다.
 ```
 ※ spread 연산자 종류
 [...] :  배열의 요소를 나타내는 데 사용되는 것으로 ES6(ES2015)에서 도입
 {...} :객체의 속성을 나타내는 데 사용되는 것으로 ES6(ES2018)에서 도입 
 ```
-```r
+```jsx
 ※ spread 연산자 예제
 let num = [1, 2, 3]
 let str = [a, b, c]
@@ -77,7 +77,7 @@ merge // [1, 2, 3, 'a', 'b', 'c]'
 5. binding의 이해
 - 객체를 외부에서 사용할 때 binding을 해서 사용해야 한다.
 - React에서는 constructor에서 binding을 하는 것이 일반적이다.
-```r
+```jsx
 let foo = {
   props: 'Hello',
   bar: function() {
