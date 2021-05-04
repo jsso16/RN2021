@@ -1,6 +1,94 @@
 # RN2021 - 201930231 전소진
 React Native 2021
 
+## 04월 30일
+> 스타일링 소개
+1. React Native에서 스타일 적용하고 관리하기
+- 스타일을 적용하는 방법은 3가지가 있다.
+```
+※ 앱에서 스타일 적용하기
+- 인라인 스타일
+- StyleSheet에 정의된 스타일 참조하기
+- 스타일 파일 분리하기
+```
+- 중복된 property가 있을 때는 마지막으로 전달된 스타일이 이전 스타일을 재정의한다.
+
+2. 스타일 구성하기
+- React Native에서는 컴포넌트 단위로 스타일이 적용된다.
+- 스타일의 적용 방법은 2가지가 있다.
+```
+※ 컴포넌트 내에서 스타일 적용하기
+- 컴포넌트 내에 스타일시트 선언하기<br /> → 위 방법은 장점은 하나의 파일에 컴포넌트와 컴포넌트가 사용할 스타일을 완전히 캡슐화할 수 있다는 것이다.
+- 컴포넌트 파일과는 별도의 스타일시트 선언하기
+```
+- 확장자는 css가 아닌 js이다.
+
+3. 스타일시트 분리하기
+- 내부 컴포넌트인 Stylesheet 컴포넌트를 import하고, 일반 컨포넌트와 마찬가지로 외부로 사용할 수 있도록 export해 준다.
+```
+import {StyleSheet} from 'react-native'
+
+const styles = StyleSheet.create({    
+  container: {    
+    marginTop: 150,
+    backgroundColor: '#ededed',
+    flexWrap: 'wrap'
+  }
+})
+
+export {styles, buttons};
+```
+- 외부 스타일을 컴포넌트로 가져와 사용하는 방법 역시 import를 해주면 된다.
+```
+import {styles, buttons} from './styles'
+
+export default class App extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <TouchableHighlight style={buttons.primary}>
+          <Text>Sample Text</Text>
+        </TouchableHighlight>
+      </View>
+    )
+  }
+}
+```
+4. 
+- 반복적으로 사용하는 스타일은 spread 연산자로 불러온다.
+```
+※ spread 연산자 종류
+[...] :  배열의 요소를 나타내는 데 사용되는 것으로 ES6(ES2015)에서 도입
+{...} :객체의 속성을 나타내는 데 사용되는 것으로 ES6(ES2018)에서 도입 
+```
+```
+※ spread 연산자 예제
+let num = [1, 2, 3]
+let str = [a, b, c]
+let merge = [...num, ...str]
+
+merge // [1, 2, 3, 'a', 'b', 'c]'
+```
+- 표시할 테마에 적합한 스타일을 가져오기 위해 getStyleSheet 함수를 사용한다.
+- backgroundColor를 쉽게 사용하기 위해서 StyleSheet의 flatten을 사용해서 StyleSheet객체를 JavaScript객체로 반환한다.
+- flatten()메소드는 스타일 객체를 병합하여 하나의 배열로 만드는데 사용된다.
+
+5. binding의 이해
+- 객체를 외부에서 사용할 때 binding을 해서 사용해야 한다.
+- React에서는 constructor에서 binding을 하는 것이 일반적이다.
+```
+let foo = {
+  props: 'Hello',
+  bar: function() {
+    console.log(this.props);
+  }
+};
+foo.bar();  // 결과: "Hello"
+
+let fooBar = foo.bar.bind(foo);
+fooBar();
+```
+
 ## 04월 16일
 1. Todo 컴포넌트 만들기
 - TodoList는 todo 목록을 랜더링하고, 각각의 todo에 대해서는 Todo 컴포넌트를 사용하여 2개의 컴포넌트를 만들어 랜더링을 해준다.
