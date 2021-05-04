@@ -18,14 +18,15 @@ React Native 2021
 - 스타일의 적용 방법은 2가지가 있다.
 ```
 ※ 컴포넌트 내에서 스타일 적용하기
-- 컴포넌트 내에 스타일시트 선언하기<br /> → 위 방법은 장점은 하나의 파일에 컴포넌트와 컴포넌트가 사용할 스타일을 완전히 캡슐화할 수 있다는 것이다.
+- 컴포넌트 내에 스타일시트 선언하기
+→ 위 방법은 장점은 하나의 파일에 컴포넌트와 컴포넌트가 사용할 스타일을 완전히 캡슐화할 수 있다는 것이다.
 - 컴포넌트 파일과는 별도의 스타일시트 선언하기
 ```
 - 확장자는 css가 아닌 js이다.
 
 3. 스타일시트 분리하기
 - 내부 컴포넌트인 Stylesheet 컴포넌트를 import하고, 일반 컨포넌트와 마찬가지로 외부로 사용할 수 있도록 export해 준다.
-```
+```r
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({    
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({    
 export {styles, buttons};
 ```
 - 외부 스타일을 컴포넌트로 가져와 사용하는 방법 역시 import를 해주면 된다.
-```
+```r
 import {styles, buttons} from './styles'
 
 export default class App extends Component {
@@ -61,7 +62,7 @@ export default class App extends Component {
 [...] :  배열의 요소를 나타내는 데 사용되는 것으로 ES6(ES2015)에서 도입
 {...} :객체의 속성을 나타내는 데 사용되는 것으로 ES6(ES2018)에서 도입 
 ```
-```
+```r
 ※ spread 연산자 예제
 let num = [1, 2, 3]
 let str = [a, b, c]
@@ -76,7 +77,7 @@ merge // [1, 2, 3, 'a', 'b', 'c]'
 5. binding의 이해
 - 객체를 외부에서 사용할 때 binding을 해서 사용해야 한다.
 - React에서는 constructor에서 binding을 하는 것이 일반적이다.
-```
+```r
 let foo = {
   props: 'Hello',
   bar: function() {
