@@ -1,6 +1,164 @@
 # RN2021 - 201930231 전소진
 React Native 2021
 
+## 05월 07일
+> 중간고사(MidtermApp) 코드 리뷰
+- 코드에서 주목해야 할 부분 
+```
+1. class 형태의 component의 선언 방법
+2. 함수 형태의 component의 선언 방법
+3. state 설정 및 초기화 방법
+4. props의 개념 및 전달 경로
+5. state에 초기화 된 값을 props로 전달하는 방법
+6. 일반 변수로 초기화 된 값을 props로 전달하는 방법
+7. 구조 분해(비구조화) 할당(Destructuring Assignment)을 통한 변수명 재할당
+8. 필요한 component만 import하기
+9. props를 전달받아 사용하기
+10. index.js에 App 지정하기
+> import React from 'react'
+> import {AppRegistry} from 'react-native'
+> import Midterm from './app/Midterm'
+> import {name as MyApp} from './app.json'
+> AppRegistry.registerComponent(MyApp, () => Midterm)
+```
+
+- 구조 분해 할당이란?
+"구조 분해 할당" 구문은 배열이나 객체의 속성을 해체하여, 그 값을 개별 변수에 담을 수 있게하는 JavaScript 표현식
+```jsx
+- 객체에서 변수를 재할당하는 방법
+const foobar = {
+  foo: 1000,
+  bar: 500
+}
+
+**ex) foobar에 있는 foo property를 woo로 바꾸고 싶을 때**
+1. 구조 분해 할당 없이 변수명 재할당
+const woo = foobar.foo
+
+2. 구조 분해 할당을 이용하는 방법
+const [foo:woo] = foobar 여러 개도 가능
+console.log(woo)  // 1000
+console.log(foobar)  // let basket = [foo: 1000, bar: 500]
+
+3. React에서 자주 사용되는 구조 분해 할당
+this.state = {
+  foo: 100,
+  bar: 200
+}
+const [foo, bar] = this.state;
+```
+참고 사이트: https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+- 배열 구조 분해
+1. 기본 변수 할당
+```jsx
+var foo = ["one", "two", "three"];
+
+var [one, two, three] = foo;
+console.log(one);  // "one"
+console.log(two);  // "two"
+console.log(three);  // "three"
+```
+2. 선언에서 분리한 할당
+3. 기본값
+4. 변수값 교환하기
+5. 함수가 반환한 배열 분석
+6. 일부 반환값 무시하기
+7. 변수의 배열의 나머지를 할당하기
+
+- 객체 구조 분해
+1. 기본 할당
+```jsx
+var o = {p: 42, q: true};
+var {p, q} = o;
+
+console.log(p);  // 42
+console.log(q);  // true
+```
+2. 선언 없는 할당
+3. 새로운 변수 이름으로 할당하기
+
+__※ console 연습은 chrome으로 하기!__
+
+> View 컴포넌트에 스타일 적용하기
+1. background color(배경색) 설정하기
+※ 지원되는 색상 형식
+| 지원 색상 형식                                    | 예시                       |
+|---------------------------------------------------|----------------------------|
+| #rgb                                              | '#06f'                     |
+| #rgba                                             | '#06fc'                    |
+| #rrggbb                                           | '#0066ff'                  |
+| #rrggbbaa                                         | '#ff00ff00'                |
+| rgb(number, number, number)                       | 'rgb(0, 102, 255)'         |
+| rgb(number, number, number, alpha)                | 'rgba(0, 102, 255, .5)'    |
+| hsl(hue, saturation, lightness)                   | 'hsl(216, 100%, 50%)'      |
+| hsla(hue, saturation, lightness, alpha)           | 'hsla(216, 100%, 50%, .5)' |
+| 투명 배경                                         | 'transparent'              |
+| CSS3에서 이름이 지정된 색상 (검정, 빨강, 파랑 등) | 'dodgerblue'               |
+
+```
+※ 색상 형식별 의미
+- rgb: 각각 빨강, 녹색 및 파랑을 나타내며, 0–255(또는 16 진수 00–ff)의 눈금을 사용하여 빨강, 녹색 및 파랑에 대한 값을 지정할 수 있다. 이때 숫자가 클수록 각 색상이 더 많이 나타난다.
+- alpha: 불투명도와 유사한 기능이다.(0은 투명, 1은 단색)
+- hue: 색상을 의미하는 말로 360도 색상환에서 1도를 나타내며 0은 빨간색, 120은 녹색, 240은 파란색이다. 채도는 회색 음영 0%에서 풀 컬러 100 %까지 색상의 강도를 의미한다.
+- lightness: 밝기를 의미하는 말로 0%에서 100% 사이의 수로 표시하며, 0%는 어둡고(검은색에 가까움) 100%는 밝다(흰색에 가까움).
+```
+
+2. border(테두리) 속성 설정하기
+```
+※ 테두리 속성별 역할
+- borderColor: 모든 테두리의 색상을 설정해준다.
+- borderRadius: 모든 테두리 경계의 꼭짓점을 둥글게 만들어준다.
+- borderStyle: 모든 테두리의 스타일을 지정해준다.
+- borderWidth: 모든 테두리의 너비를 지정해준다. 
+```
+- 다양한 테두리 예제 코드
+```jsx
+import React, { Component } from 'react';
+import { StyleSheet, Text, View} from 'react-native';
+
+export default class App extends Component<{}> {
+    render() {
+      return (
+        <View style={styles.container}>
+           <Example style={{borderWidth: 1}}>    
+               <Text>borderWidth: 1</Text>
+           </Example>
+           <Example style={{borderWidth: 3, borderLeftWidth: 0}}>    
+               <Text>borderWidth: 3, borderLeftWidth: 0</Text>
+           </Example>
+           <Example style={{borderWidth: 3, borderLeftColor: 'red'}}>    
+               <Text>borderWidth: 3, borderLeftColor: 'red'</Text>
+           </Example>
+           <Example style={{borderLeftWidth: 3}}>    
+               <Text>borderLeftWidth: 3</Text>
+           </Example>
+           <Example style={{borderWidth: 1, borderStyle: 'dashed'}}>    
+               <Text>borderWidth: 1, borderStyle: 'dashed'</Text>
+           </Example>
+         </View>
+      );
+    }
+}
+
+const Example = (props) => (    
+    <View style={[styles.example,props.style]}>
+        {props.children}
+    </View>
+);
+
+const styles = StyleSheet.create({ 
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    example: {
+        marginBottom: 15
+    }
+});
+```
+
 ## 04월 30일
 > 스타일링 소개
 1. React Native에서 스타일 적용하고 관리하기
@@ -68,7 +226,7 @@ let num = [1, 2, 3]
 let str = [a, b, c]
 let merge = [...num, ...str]
 
-merge // [1, 2, 3, 'a', 'b', 'c]'
+merge  // [1, 2, 3, 'a', 'b', 'c']
 ```
 - 표시할 테마에 적합한 스타일을 가져오기 위해 getStyleSheet 함수를 사용한다.
 - backgroundColor를 쉽게 사용하기 위해서 StyleSheet의 flatten을 사용해서 StyleSheet객체를 JavaScript객체로 반환한다.
