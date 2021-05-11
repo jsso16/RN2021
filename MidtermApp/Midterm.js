@@ -1,24 +1,24 @@
-import React from 'react'
-import {View, Text} from 'react-native'
+import React, {component} from 'react'
 import DataTest from './DataTest'
 
-class Midterm extends React.Component {
+class Midterm extends React {
   constructor() {
     super()
     this.state = {
-      name: '전소진',
       id: 201930231,
-      foo: [1,2,3,4,5]
+      name: '전소진'
     }
   }
   
   render() {
+    const {id, name} = this.state  // 구조 분해 할당
     return (
-      <View>
-        <Text>{this.state.id}</Text>
-        <Text>{this.state.name}</Text>
-        <DataTest array={this.state.foo}></DataTest>
-      </View>
+      // DataTest.js로 전달한다.
+      <DataTest
+        id={id}
+        name={name}
+        foo={[1, 2, 3, 4, 5]}
+      />
     )
   }
 }
