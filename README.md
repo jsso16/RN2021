@@ -15,6 +15,7 @@ React Native 2021
 9. props를 전달받아 사용하기
 10. index.js에 App 지정하기
 ```jsx
+※ App 지정 코드
 import React from 'react'
 import {AppRegistry} from 'react-native'
 import Midterm from './app/Midterm'
@@ -25,7 +26,7 @@ AppRegistry.registerComponent(MyApp, () => Midterm)
 - 구조 분해 할당이란?<br>
 "구조 분해 할당" 구문은 배열이나 객체의 속성을 해체하여, 그 값을 개별 변수에 담을 수 있게하는 JavaScript 표현식이다.
 
-- 객체에서 변수를 재할당하는 방법
+객체에서 변수를 재할당하는 방법
 ```jsx
 const foobar = {
   foo: 1000,
@@ -33,7 +34,7 @@ const foobar = {
 }
 ```
 
-**ex) foobar에 있는 foo property를 woo로 바꾸고 싶을 때**
+ex) foobar에 있는 foo property를 woo로 바꾸고 싶을 때
 ```jsx
 1. 구조 분해 할당 없이 변수명 재할당
 const woo = foobar.foo
@@ -70,7 +71,7 @@ console.log(three);  // "three"
 6. 일부 반환값 무시하기
 7. 변수의 배열의 나머지를 할당하기
 
-- 객체 구조 분해
+#### 객체 구조 분해
 1. 기본 할당
 ```jsx
 var o = {p: 42, q: true};
@@ -85,7 +86,8 @@ console.log(q);  // true
 __※ console 연습은 chrome으로 하기!__
 
 > View 컴포넌트에 스타일 적용하기
-1. background color(배경색) 설정하기<br>
+1. background color(배경색) 설정하기
+
 ※ 지원되는 색상 형식
 | 지원 색상 형식                                    | 예시                       |
 |---------------------------------------------------|----------------------------|
