@@ -15,7 +15,7 @@ React Native 2021
 9. props를 전달받아 사용하기
 10. index.js에 App 지정하기
 ```jsx
-※ App 지정 코드
+※ 시작 컴포넌트 지정 방법
 import React from 'react'
 import {AppRegistry} from 'react-native'
 import Midterm from './app/Midterm'
@@ -83,7 +83,7 @@ console.log(q);  // true
 2. 선언 없는 할당
 3. 새로운 변수 이름으로 할당하기
 
-__※ console 연습은 chrome으로 하기!__
+- console 연습은 chrome으로 하기!
 
 > View 컴포넌트에 스타일 적용하기
 1. background color(배경색) 설정하기
