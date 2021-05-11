@@ -4,7 +4,6 @@ React Native 2021
 ## 05월 07일
 > 중간고사(MidtermApp) 코드 리뷰
 - 코드에서 주목해야 할 부분 
-```
 1. class 형태의 component의 선언 방법
 2. 함수 형태의 component의 선언 방법
 3. state 설정 및 초기화 방법
@@ -15,23 +14,27 @@ React Native 2021
 8. 필요한 component만 import하기
 9. props를 전달받아 사용하기
 10. index.js에 App 지정하기
-> import React from 'react'
-> import {AppRegistry} from 'react-native'
-> import Midterm from './app/Midterm'
-> import {name as MyApp} from './app.json'
-> AppRegistry.registerComponent(MyApp, () => Midterm)
+```jsx
+import React from 'react'
+import {AppRegistry} from 'react-native'
+import Midterm from './app/Midterm'
+import {name as MyApp} from './app.json'
+AppRegistry.registerComponent(MyApp, () => Midterm)
 ```
 
-- 구조 분해 할당이란?
-"구조 분해 할당" 구문은 배열이나 객체의 속성을 해체하여, 그 값을 개별 변수에 담을 수 있게하는 JavaScript 표현식
-```jsx
+- 구조 분해 할당이란?<br>
+"구조 분해 할당" 구문은 배열이나 객체의 속성을 해체하여, 그 값을 개별 변수에 담을 수 있게하는 JavaScript 표현식이다.
+
 - 객체에서 변수를 재할당하는 방법
+```jsx
 const foobar = {
   foo: 1000,
   bar: 500
 }
+```
 
 **ex) foobar에 있는 foo property를 woo로 바꾸고 싶을 때**
+```jsx
 1. 구조 분해 할당 없이 변수명 재할당
 const woo = foobar.foo
 
@@ -47,9 +50,10 @@ this.state = {
 }
 const [foo, bar] = this.state;
 ```
-참고 사이트: https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+참고 사이트 
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 
-- 배열 구조 분해
+#### 배열 구조 분해
 1. 기본 변수 할당
 ```jsx
 var foo = ["one", "two", "three"];
@@ -81,7 +85,7 @@ console.log(q);  // true
 __※ console 연습은 chrome으로 하기!__
 
 > View 컴포넌트에 스타일 적용하기
-1. background color(배경색) 설정하기
+1. background color(배경색) 설정하기<br>
 ※ 지원되는 색상 형식
 | 지원 색상 형식                                    | 예시                       |
 |---------------------------------------------------|----------------------------|
