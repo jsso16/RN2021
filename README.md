@@ -46,7 +46,7 @@ class App extends Component {
 - 명시적으로 지정할 수도 있지만, 반응형에는 적합하지 않다.
 - 각 컴포넌트의 위치는 다른 컴포넌트의 위치에 상대적으로 지정하는 것이 바람직하다.
 - margin, padding, border, component 영역의 상호연관성은 아래 그림과 같다.
-![상호연관성](Uploading img.png…)
+
 <img width="193" alt="img" src="https://user-images.githubusercontent.com/62285642/118591133-a394e900-b7de-11eb-9932-99b96e5eed18.png">
 
 - margin 속성 이용하기
@@ -66,15 +66,11 @@ class App extends Component {
 ```
 
 5. position을 이용해 컴포넌트 배치하기
-- position 속성 이용하기
-```
-※ position 속성 특징
 - 구현은 css와 유사하지만, css만큼 다양한 옵션을 지원하지 않는다.
 - 모든 요소는 다른 요소들에 상대적으로 배치된다.
 - position이 absolute로 지정되면, 해당 요소의 위치는 부모 요소의 위치를 기준으로 배치된다.
 - position 속성에는 relative(상대값:기본값)과 absolute(절대값)가 있다.
 - css의 static, fixed는 지원하지 않는다.
-```
 
 6. App.js의 기본 포맷
 - 가끔 알 수 없는 문제로 인해 앱이 제대로 실행되지 않을 경우, 아래의 기본 포맷에 필요한 부분만 복사하여 사용하면 오류가 발생하지 않는다.
