@@ -46,7 +46,8 @@ class App extends Component {
 - 명시적으로 지정할 수도 있지만, 반응형에는 적합하지 않다.
 - 각 컴포넌트의 위치는 다른 컴포넌트의 위치에 상대적으로 지정하는 것이 바람직하다.
 - margin, padding, border, component 영역의 상호연관성은 아래 그림과 같다.
-![상호연관성](../img.jpg)
+![상호연관성](Uploading img.png…)
+<img width="193" alt="img" src="https://user-images.githubusercontent.com/62285642/118591133-a394e900-b7de-11eb-9932-99b96e5eed18.png">
 
 - margin 속성 이용하기
 ```
