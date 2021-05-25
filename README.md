@@ -10,9 +10,7 @@ React Native 2021
 - checkout을 사용할 경우, 하단의 Git Graph를 선택하여 현재의 커밋에서 원하는 커밋을 선택한 후 우클릭하여 사용한다.
 - VSCode의 Extension에서 설치할 수 있다.
 ```
-- checkout 사용 시 코드를 수정할 경우, 
-<span style="color:red">master와 원격 저장소의 코드가 달라 충돌</span>
-할 수 있으므로 되도록이면 수정하지 않는 것이 좋다.
+- checkout 사용 시 코드를 수정할 경우, **master와 원격 저장소의 코드가 달라 충돌**할 수 있으므로 되도록이면 수정하지 않는 것이 좋다.
 
 2. Text 컴포넌트 VS View 컴포넌트
 - flex 속성을 제외하고는 View에서 사용되는 대부분의 스타일을 Text에서도 사용할 수 있다.
@@ -71,30 +69,29 @@ centeredText: {
 - 화면 크기(Screen Size): 한 모서리에서 다른 모서리까지 화면의 대각선 치수를 의미한다.
 - 해상도(Resolution): 디스플레이의 픽셀 수로, 가장 일반적으로 기기의 너비와 높이에 따른 픽셀 수로 표현된다.
 ```
-- 플랫폼 별 크기 단위에는 Pixels, points, DPs가 있다.
+- 플랫폼별 크기 단위에는 Pixels, points, DPs가 있다.
 ```
-※ 플랫폼 별 크기 단위 
+※ 플랫폼별 크기 단위 
 - Pixels(픽셀): 디스플레이에서 프로그래밍 가능한 색상의 가장 작은 단위로, 일반적으로 픽셀은 빨간색, 녹색, 파란색 (RGB) 색상 구성 요소로 구성된다.
 - DPs(Device Pixel): 안드로이드 사이즈 단위로, PPI가 다른 디바이스에서 px로 표기하면 밀도가 클수록 작게 보이며, dp로 표기하면 동일한 비율로 표현한다.
 - points(포인트): iOS 사이즈 단위로, DP와 같은 역할을 합니다.
 ```
 2. ShadowPropTypesIOS 및 Elevation으로 그림자 만들기
 - iOS에서는 ShadowPropTypesIOS 스타일을 사용하여 그림자를 추가 할 수 있고, Android에서는 Elevation을 사용하여 그림자를 만들 수 있다.
-- 그림자를 넣을떄는 Platform.select를 이용한다.
+- 그림자를 넣을 때는 Platform.select를 사용한다.
 ```jsx
 ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: {
-          height: 10
-        },
-        shadowOpacity: 1
+    ios: {
+      shadowColor: 'black',
+      shadowOffset: {
+        height: 10
       },
-      android: {
-        elevation: 15
-      }
-    })
-  }
+      shadowOpacity: 1
+    },
+    android: {
+      elevation: 15
+    }
+  })
 ```
 3. transform을 사용하여 구성 요소 이동, 회전, 크기 조정 및 기울이기
 4. Flexbox를 사용하여 구성 요소를 배치하기
