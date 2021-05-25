@@ -3,7 +3,7 @@ React Native 2021
 
 ## 05월 21일
 1. git graph 활용하기
-- 이전 커밋으로 돌아가고 싶을 떄 git의 checkout을 사용하는데, git graph를 사용하여 보는 것이 편리하다.
+- 이전 커밋으로 돌아가고 싶을 때 git의 checkout을 사용하는데, git graph를 사용하여 보는 것이 편리하다.
 - git graph는 본인의 커밋이 현재 어디에 있는지를 확인할 수 있다.
 ```
 ※ git graph 사용 방법
