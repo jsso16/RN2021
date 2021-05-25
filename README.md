@@ -1,6 +1,116 @@
 # RN2021 - 201930231 전소진
 React Native 2021
 
+## 05월 21일
+1. git graph 활용하기
+- 이전 커밋으로 돌아가고 싶을 떄 git의 checkout을 사용하는데, git graph를 사용하여 보는 것이 편리하다.
+- git graph는 본인의 커밋이 현재 어디에 있는지를 확인할 수 있다.
+```
+※ git graph 사용 방법
+- checkout을 사용할 경우, 하단의 Git Graph를 선택하여 현재의 커밋에서 원하는 커밋을 선택한 후 우클릭하여 사용한다.
+- VSCode의 Extension에서 설치할 수 있다.
+```
+- checkout 사용 시 코드를 수정할 경우, <span style="color:red">master와 원격 저장소의 코드가 달라 충돌</span>할 수 있으므로 되도록이면 수정하지 않는 것이 좋다.
+
+2. Text 컴포넌트 VS View 컴포넌트
+- flex 속성을 제외하고는 View에서 사용되는 대부분의 스타일을 Text에서도 사용할 수 있다.
+- 반대로 Text에서 사용하는 스타일을 View에서는 사용할 수 없다.
+
+3. font family 지정하기
+- css와는 다르게 fontFamily 속성에 여러개의 폰트를 지정할 수 없다.
+- iOS에서는 monospace 옵션을 사용할 수 없으며, 사용할 경우 아래와 같은 오류가 발생한다.
+```
+→ “Unrecognized font family ‘monospace’”
+```
+- 안드로이드에서는 지원하지 않는 폰트가 지정되면 기본 폰트를 사용한다.
+- 기본 폰트 외에 다른 폰트를 사용하려면 Platform 컴포넌트를 이용한다.
+```jsx
+import {Platform, StyleSheet, Text, View} from 'react‐native'
+~
+{Platform.OS}
+~
+centeredText: { 
+  textAlign: 'center', 
+  margin: 10, 
+  fontSize: 24, 
+  ...Platform.select({
+    ios: {
+      fontFamily: 'American Typewriter' // ios에서만 지원
+      }, 
+      android: {
+        fontFamily: 'monospace' // android에서만 지원
+      }
+  })
+}
+```
+
+- 기타 폰트 속성
+```
+※ 폰트 속성 3가지
+- fontSize: 텍스트의 크기를 조정하며, 기본 크기는 14px이다.
+- fontStyle: normal과 italic 두개의 옵션만 사용이 가능하며, 기본값은 normal이다.
+- fontWeight: 텍스트의 굵기를 조정하며, 기본값은 normal 또는 400이다.
+```
+
+4. 텍스트 장식하기
+- 각 플랫폼마다 Text 컴포넌트를 지원하는 속성이 다르며, 지원 스타일은 아래와 같다.
+```
+※ 플랫폼별 지원 스타일
+- iOS와 Android: lineHeight,textAlign,textDecorationLine,textShadowColor, textShadowOffset, textShadowRadius
+- Android: textAlignVertical
+- iOS: letterSpacing,textDecorationColor,textDecorationStyle,writingDirection
+```
+
+> 고급 스타일링 소개
+1. 플랫폼 별 크기 및 스타일
+- 디스플레이의 물리적 속성에는 화면 크기, 해상도 등이 있다.
+```
+※ 각 물리적 속성의 의미 
+- 화면 크기(Screen Size)는 한 모서리에서 다른 모서리까지 화면의 대각선 치수를 의미한다.
+- 해상도(Resolution)는 디스플레이의 픽셀 수로, 가장 일반적으로 기기의 너비와 높이에 따른 픽셀 수로 표현된다.
+```
+- 플랫폼 별 크기 단위에는 Pixels, points, DPs가 있다.
+```
+※ 플랫폼 별 크기 단위 
+- Pixels(픽셀): 디스플레이에서 프로그래밍 가능한 색상의 가장 작은 단위로, 일반적으로 픽셀은 빨간색, 녹색, 파란색 (RGB) 색상 구성 요소로 구성된다.
+- DPs(Device Pixel): 안드로이드 사이즈 단위로, PPI가 다른 디바이스에서 px로 표기하면 밀도가 클수록 작게 보이며, dp로 표기하면 동일한 비율로 표현한다.
+- points(포인트): iOS 사이즈 단위로, DP와 같은 역할을 합니다.
+```
+2. ShadowPropTypesIOS 및 Elevation으로 그림자 만들기
+- iOS에서는 ShadowPropTypesIOS 스타일을 사용하여 그림자를 추가 할 수 있고, Android에서는 Elevation을 사용하여 그림자를 만들 수 있다.
+- 그림자를 넣을떄는 Platform.select를 이용한다.
+```jsx
+...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          height: 10
+        },
+        shadowOpacity: 1
+      },
+      android: {
+        elevation: 15
+      }
+    })
+  }
+```
+3. transform을 사용하여 구성 요소 이동, 회전, 크기 조정 및 기울이기
+4. Flexbox를 사용하여 구성 요소를 배치하기
+
+> 네비게이션 사용하기
+- 앱의 핵심 기능 중 하나로, 네비게이션의 종류에는 3가지가 있다.
+```
+※ 네비게이션의 종류
+- 탭(tab) 네비게이션 
+화면의 위나 아래에 탭이 있고, 탭을 터치하면 연결된 페이지로 라우팅 된다.
+- 스택(stack) 네비게이션
+기존의 화면위에 다른 화면이 스택 구조로 쌓이는 형태로, 화면 이동 후 스택에 있는 이전 화면으로 되돌아가거나 계속해서 다음 화면으로 이동이 가능하다.
+- 드로어(drawer) 네비게이션
+화면의 왼쪽 또는 오른쪽에서 나오는 전형적인 사이드 메뉴로 메뉴 항목을 선택할 시 드로어가 닫히고 메뉴 화면으로 이동
+```
+- React Native에는 네비게이션 라이브러리가 포함되어 있지 않다.
+- 따라서 React Native에서 네비게이션을 사용할 때는 개발자들이 개발하고 관리하는 오픈소스 라이브러리인 Wix를 이용한다.
+
 ## 05월 14일
 > 스타일링 소개 2
 1. border 속성 지정하기
