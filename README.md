@@ -1,6 +1,182 @@
 # RN2021 - 201930231 전소진
 React Native 2021
 
+## 05월 28일
+> 네비게이션(+React Native CLI)
+
+**1. 네비게이션의 개요**
+```
+- 네비게이션에 관한 기본적인 설명 및 종류에 대한 내용은 하단의 5월 21일 readme.md의 '네비게이션 사용하기'를 참조
+```
+- React Native에서는 네비게이션 라이브러리를 지원하지 않기 떄문에 third party 네비게이션 라이브러리를 사용해야 한다.
+- 현재 프로젝트에서 사용하는 React Navigation은 자바스크립트로 구현되어있으며, React Native의 개발진이 추천하는 라이브러리이다.
+
+**2. 프로젝트 생성하기**
+- 프로젝트 폴더를 생성하기 위해서는 아래의 명령을 수행해준다.
+```
+react-native init NaviApp
+```
+- 위 명령을 실행하기 위해서는 React Native CLI가 설치되어 있어야 하므로 그 전애 아래의 명령을 실행해주어야 한다.
+```
+npm install -g react-native-cli
+```
+- 프로젝트 실행은 아래의 명령을 통해 수행된다.
+```
+npm run android
+```
+
+**3. react-navigation V5 설치**
+- react-navigation V5 라이브러리는 아래의 명령어를 통해 설치한다.
+```
+> npm install @react-navigation/native
+> npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+```
+- 설치가 끝나면 다음을 import 해주어야 React Navigation을 사용할 수 있다.
+```
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+```
+- React Navigation에 대한 더 자세한 내용은 아래의 문서를 참고한다.<br>
+https://reactnavigation.org/
+
+**4. Stack Navigation 설치**
+- Stack Navigation을 사용하려면 아래와 같이 설치한다.
+```
+npm install @react-navigation/stack
+```
+- App.js 코드에 적용하기
+```jsx
+import * as React from 'react'
+import { View, Text } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App
+```
+**5. 화면 이동시키기**
+- 아래의 옵션을 통해 타이틀을 바꿀 수도 있다.
+```
+options={{title: 'Overview'}}
+```
+- 화면 이동 버튼을 클릭했을 떄, navigate() 메소드를 이용하면 정상 동작은 하지만 현재 페이지에 있기 때문에 아무런 움직임이 보이지 않는다.
+- 이러한 경우, push() 메소드를 이용하면 화면을 계속 추가할 수는 있지만 합리적인 방법은 아니다.
+- 따라서 나중에 화면이 추가된다면 navigate() 메소드를 이용해 아래의 에시처럼 다른 화면으로 바꾸는 것이 효과적이다.
+```
+※ Details에서 Notifications로 화면 바꾸기
+onPress={() => navigation.navigate('Notifications')}
+```
+
+**6. Tab Navigation 설치**
+- Tab Navigation을 사용하려면 아래와 같이 설치한다.
+```
+npm install @react-navigation/bottom-tabs
+```
+- App.js 코드에 적용하기
+```jsx
+import * as React from 'react'
+import { Text, View } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home!</Text>
+    </View>
+  );
+}
+
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
+**7. Drawer Navigation 설치**
+- Drawer Navigation을 사용하려면 아래와 같이 설치한다.
+```
+npm install @react-navigation/drawer
+```
+- App.js 코드에 적용하기
+```jsx
+import * as React from 'react'
+import { Button, View } from 'react-native'
+import { createDrawerNavigator } from '@react-navigation/drawer'
+import { NavigationContainer } from '@react-navigation/native'
+
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        onPress={() => navigation.navigate('Notifications')}
+        title="Go to notifications"
+      />
+    </View>
+  );
+}
+
+function NotificationsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
+    </View>
+  );
+}
+
+const Drawer = createDrawerNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
+> Expo CLI
+- 하단의 Expo2021 Repository의 readme.md를 참고<br>
+https://github.com/jsso16/Expo2021
+
 ## 05월 21일
 1. git graph 활용하기
 - 이전 커밋으로 돌아가고 싶을 때 git의 checkout을 사용하는데, git graph를 사용하여 보는 것이 편리하다.
