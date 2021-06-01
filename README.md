@@ -8,7 +8,7 @@ React Native 2021
 ```
 - 네비게이션에 관한 기본적인 설명 및 종류에 대한 내용은 하단의 5월 21일 readme.md의 '네비게이션 사용하기'를 참고
 ```
-- React Native에서는 네비게이션 라이브러리를 지원하지 않기 떄문에 third party 네비게이션 라이브러리를 사용해야 한다.
+- React Native에서는 네비게이션 라이브러리를 지원하지 않기 때문에 third party 네비게이션 라이브러리를 사용해야 한다.
 - 현재 프로젝트에서 사용하는 React Navigation은 자바스크립트로 구현되어있으며, React Native의 개발진이 추천하는 라이브러리이다.
 
 **2. 프로젝트 생성하기**
@@ -16,7 +16,7 @@ React Native 2021
 ```
 react-native init NaviApp
 ```
-- 위 명령을 실행하기 위해서는 React Native CLI가 설치되어 있어야 하므로 그 전에 아래의 명령을 실행해주어야 한다.
+- 위 명령을 실행하기 위해서는 React Native CLI가 설치되어 있어야 하므로 아래의 명령을 먼저 실행해주어야 한다.
 ```
 npm install -g react-native-cli
 ```
@@ -33,8 +33,8 @@ npm run android
 ```
 - 설치가 끝나면 다음을 import 해주어야 React Navigation을 사용할 수 있다.
 ```
-import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler'
+import { NavigationContainer } from '@react-navigation/native'
 ```
 - React Navigation에 대한 더 자세한 내용은 아래의 문서를 참고한다.<br>
 https://reactnavigation.org/
