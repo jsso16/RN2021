@@ -2,11 +2,11 @@
 React Native 2021
 
 ## 05월 28일
-> 네비게이션(+React Native CLI)
+> 네비게이션 ( + React Native CLI )
 
 **1. 네비게이션의 개요**
 ```
-- 네비게이션에 관한 기본적인 설명 및 종류에 대한 내용은 하단의 5월 21일 readme.md의 '네비게이션 사용하기'를 참조
+- 네비게이션에 관한 기본적인 설명 및 종류에 대한 내용은 하단의 5월 21일 readme.md의 '네비게이션 사용하기'를 참고
 ```
 - React Native에서는 네비게이션 라이브러리를 지원하지 않기 떄문에 third party 네비게이션 라이브러리를 사용해야 한다.
 - 현재 프로젝트에서 사용하는 React Navigation은 자바스크립트로 구현되어있으며, React Native의 개발진이 추천하는 라이브러리이다.
@@ -16,7 +16,7 @@ React Native 2021
 ```
 react-native init NaviApp
 ```
-- 위 명령을 실행하기 위해서는 React Native CLI가 설치되어 있어야 하므로 그 전애 아래의 명령을 실행해주어야 한다.
+- 위 명령을 실행하기 위해서는 React Native CLI가 설치되어 있어야 하므로 그 전에 아래의 명령을 실행해주어야 한다.
 ```
 npm install -g react-native-cli
 ```
@@ -78,9 +78,9 @@ export default App
 ```
 options={{title: 'Overview'}}
 ```
-- 화면 이동 버튼을 클릭했을 떄, navigate() 메소드를 이용하면 정상 동작은 하지만 현재 페이지에 있기 때문에 아무런 움직임이 보이지 않는다.
+- 화면 이동 버튼을 클릭했을 때, navigate() 메소드를 이용하면 정상 동작은 하지만 현재 페이지에 있기 때문에 아무런 움직임이 보이지 않는다.
 - 이러한 경우, push() 메소드를 이용하면 화면을 계속 추가할 수는 있지만 합리적인 방법은 아니다.
-- 따라서 나중에 화면이 추가된다면 navigate() 메소드를 이용해 아래의 에시처럼 다른 화면으로 바꾸는 것이 효과적이다.
+- 따라서 나중에 화면이 추가된다면 navigate() 메소드를 이용해 아래의 예시처럼 다른 화면으로 바꾸는 것이 효과적이다.
 ```
 ※ Details에서 Notifications로 화면 바꾸기
 onPress={() => navigation.navigate('Notifications')}
