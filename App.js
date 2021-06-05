@@ -1,48 +1,21 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+// 예제 8.4 - Provider 컴포넌트와 store 객체 추가하기
+import React from 'react'
+import Books from './src/Books'    
+import rootReducer from './src/reducers' 
 
-import React, {Component} from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Provider} from 'react-redux'    
+import {createStore} from 'redux'    
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const store = createStore(rootReducer)    
 
-
-// 예제 2.19
-class MainComponent extends Component { 
-  handleClick() {
-     this._timeout = setTimeout(() => {
-       this.openWidget();
-     }, 2000);
-   }
-
-   componentWillUnmount() {
-     clearTimeout(this._timeout); 
-   }
-
-   render() {
-     return <SomeComponent 
-              handleClick={() => this.handleClick()} />
-   }
+class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Books />
+      </Provider>
+    )
+  }
 }
 
-export default MainComponent;
+export default App
