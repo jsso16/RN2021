@@ -1,6 +1,224 @@
 # RN2021 - 201930231 전소진
 React Native 2021
 
+## 06월 04일
+> Redux Data Architecture 라이브러리 이용하기
+
+**1. Redux란?**
+- "JavaScript 앱을 위한 예측 가능한 state 컨테이너"로 정의한다.
+- Redux의 특징은 다음과 같다.
+```
+※ React Redux의 특징
+- 앱에 단 하나밖에 없는 전역 상태의 객체이다.
+- 전역 state 객체는 React Native 컴포넌트에서 props로 전달된다.
+- Redux state의 데이터가 변경되면, 변경된 새 데이터가 전체 앱에 props로 전달된다.
+- 앱의 state를 모두 store라는 곳으로 이동시켜 데이터 관리를 편리하게 한다.
+- React의 context라는 기능을 이용해서 동작한다.
+- 여기서 context는 전역 state를 만들고 관리하는 메커니즘이다.
+```
+- React Redux 공식 사이트<br> 
+https://react-redux.js.org/
+
+**2. context를 이용해서 앱의 전역 상태 관리하기**
+- context는 전역 변수를 만드는 React API이다.
+- context를 전달받는 컴포넌트는 context를 만든 컴포넌트의 자식 컴포넌트이어야 한다.
+- 일반적으로 데이터를 전달하려면 컴포넌트 구조의 단계별로 props를 전달하지만 context를 이용하면 props를 사용할 필요가 없다.<br>
+→ 왜냐하면 전역 객체이기 때문에 앱 전체에서 context를 참조할 수 있기 떄문이다.
+```
+- context 관련 코드는 상단의 Redux.js 파일을 참조
+```
+
+**3. React Native 앱에 Redux 구현하기**
+- Redux를 구현하기 위해서는 Redux 관련 의존성 라이브러리를 설치해야 한다.
+```
+npm install redux react-redux
+```
+
+**4. Redux reducer로 Redux 상태 관리하기**
+- reducer는 객체를 반환하는 함수로, 이를 묶어서 전역 state를 구성한다.
+- reducer에서 만들고 반환한 state는 이후에 Redux store에서 참조할 수 있게 된다.
+```jsx
+※ src - bookReducer.js
+
+const initialState = {    
+  books: [{name: 'East of Eden', author: 'John Steinbeck'}]    
+}
+
+const bookReducer = (state = initialState) => {     
+  return state
+}
+
+export default bookReducer
+```
+```jsx
+※ src - index.js
+
+import {combineReducers} from 'redux'    
+import bookReducer from './bookReducer'    
+
+const rootReducer = combineReducers({    
+  bookReducer
+})
+
+export default rootReducer
+```
+- Redux와 React-Redux 함수를 이용하면 모든 자식 컴포넌트가 참조할 수 있게 해준다.
+
+**5. Provider를 추가하고 store 만들기**
+- Provider는 자식 컴포넌트에 데이터를 전달하는 부모 컴포넌트이다.
+- Redux에서 Provider는 앱 전체에 전역 state를 전달한다.
+```jsx
+※ App.js
+
+import React from 'react'
+import Books from './src/Books'    
+import rootReducer from './src/reducers' 
+
+import {Provider} from 'react-redux'    
+import {createStore} from 'redux'    
+
+const store = createStore(rootReducer)    
+class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Books />
+      </Provider>
+    )
+  }
+}
+
+export default App
+```
+
+**6. connect 함수를 이용해서 데이터 참조하기**
+- React-Redux의 connect 함수를 이용해 자식 컴포넌트에서 store를 참조한다.
+- connect 함수의 첫 번째 매개변수는 Redux의 전역 state를 참조할 수 있게 해주는 함수이다.
+```
+connect(args)(args)
+```
+- connect 함수는 다른 함수를 반환하는 커링 함수이다.
+- 첫 번째 매개변수로 실행된 결과로 생성된 객체는 두 번째 매개변수로 전달된 컴포넌트의 props로 사용할 수 있다.
+```jsx
+※ src - Book.js 
+(기존의 connect 함수)
+
+connect(
+  (state) => {
+    return {    
+      books: state.bookReducer.books
+    }
+  }
+)(Books)                               
+```
+```jsx
+※ src - Book.js
+(변경된 connect 함수)
+
+const mapStateToProps = (state) => ({
+  books: state.bookReducer.books
+})    
+
+export default connect(mapStateToProps)(Books)
+```
+
+**7. action 추가하기**
+- action은 store에 데이터를 보내고, reducer를 업데이트하는 객체를 반환하는 함수이다.
+- store의 데이터는 action을 통해서만 변경할 수 있다.
+- 각 action은 reducer가 사용할 수 있도록, type 속성을 포함한다.
+- Redux의 dispatch 함수로 action을 호출하면, 앱의 모든 reducer에 action이 전달된다.
+- reducer가 action을 전달받으면, action의 type 속성을 확인하고 reducer와 관련된 action에 따라 reducer가 반환된 것을 업데이트 한다.
+```jsx
+※ src - actions.js
+
+export const ADD_BOOK = 'ADD_BOOK'    
+
+export function addBook(book) {
+  return {
+    type: ADD_BOOK,
+    book
+  }
+}
+```
+```jsx
+※ src - bookReducer.js
+
+import {ADD_BOOK,} from '../actions'  
+
+...
+
+const bookReducer = (state = initialState, action) => {    
+  switch(action.type) {    
+    case ADD_BOOK:
+      return {
+        books: [    
+          ...state.books,
+          action.book
+        ]
+      }
+
+    default:    
+      return state
+  }
+}
+
+export default bookReducer
+```
+
+**8. reducer에서 Redux store에 저장된 내용 지우기**
+- 배열에서 항목을 제거하려면 각 항목을 고유하게 식별할 수 있어야 한다.
+- 이를 위해 uuid 라이브러리를 사용한다.
+```
+npm install uuid
+```
+- uuid 라이브러리를 이용하면 배열에 있는 항목에 고유 식별자를 부여할 수 있다.
+```jsx
+※ src - bookReducer.js
+
+import uuidV4 from 'uuid/v4'
+
+const initialState = {    
+  books: [{name: 'East of Eden', author: 'John Steinbeck', id: uuidV4()}]    
+}
+
+const bookReducer = (state = initialState, action) => {    
+  switch(action.type) {   
+    
+    ... 
+    
+    case REMOVE_BOOK:    
+      const index = state.books.findIndex(
+                      book => book.id === action.book.id)    
+      return {
+        books: [    
+          ...state.books.slice(0, index),
+          ...state.books.slice(index + 1)
+        ]
+      }
+
+    ... 
+   
+  }
+}
+
+export default bookReducer
+```
+```jsx
+※ src - actions.js
+
+import uuidV4 from 'uuid/v4' 
+
+export function addBook(book) {
+  return {
+    type: ADD_BOOK,
+    book: {
+      ...book,
+      id: uuidV4()    
+    }
+  }
+}
+```
+
 ## 05월 28일
 > 네비게이션 ( + React Native CLI )
 
