@@ -9,6 +9,7 @@ React Native 2021
 - Redux의 특징은 다음과 같다.
 ```
 ※ React Redux의 특징
+
 - 앱에 단 하나밖에 없는 전역 상태의 객체이다.
 - 전역 state 객체는 React Native 컴포넌트에서 props로 전달된다.
 - Redux state의 데이터가 변경되면, 변경된 새 데이터가 전체 앱에 props로 전달된다.
@@ -23,7 +24,7 @@ https://react-redux.js.org/
 - context는 전역 변수를 만드는 React API이다.
 - context를 전달받는 컴포넌트는 context를 만든 컴포넌트의 자식 컴포넌트이어야 한다.
 - 일반적으로 데이터를 전달하려면 컴포넌트 구조의 단계별로 props를 전달하지만 context를 이용하면 props를 사용할 필요가 없다.<br>
-→ 왜냐하면 전역 객체이기 때문에 앱 전체에서 context를 참조할 수 있기 떄문이다.
+→ 왜냐하면 전역 객체이기 때문에 앱 전체에서 context를 참조할 수 있기 때문이다.
 ```
 - context 관련 코드는 상단의 Redux.js 파일을 참조
 ```
@@ -125,7 +126,7 @@ export default connect(mapStateToProps)(Books)
 **7. action 추가하기**
 - action은 store에 데이터를 보내고, reducer를 업데이트하는 객체를 반환하는 함수이다.
 - store의 데이터는 action을 통해서만 변경할 수 있다.
-- 각 action은 reducer가 사용할 수 있도록, type 속성을 포함한다.
+- 각 action은 reducer가 사용할 수 있도록 type 속성을 포함한다.
 - Redux의 dispatch 함수로 action을 호출하면, 앱의 모든 reducer에 action이 전달된다.
 - reducer가 action을 전달받으면, action의 type 속성을 확인하고 reducer와 관련된 action에 따라 reducer가 반환된 것을 업데이트 한다.
 ```jsx
@@ -143,7 +144,7 @@ export function addBook(book) {
 ```jsx
 ※ src - bookReducer.js
 
-import {ADD_BOOK,} from '../actions'  
+import {ADD_BOOK} from '../actions'  
 
 ...
 
