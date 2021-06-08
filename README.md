@@ -9,7 +9,6 @@ React Native 2021
 - Redux의 특징은 다음과 같다.
 ```
 ※ React Redux의 특징
-
 - 앱에 단 하나밖에 없는 전역 상태의 객체이다.
 - 전역 state 객체는 React Native 컴포넌트에서 props로 전달된다.
 - Redux state의 데이터가 변경되면, 변경된 새 데이터가 전체 앱에 props로 전달된다.
